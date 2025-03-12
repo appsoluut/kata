@@ -29,6 +29,16 @@ class BoardTest {
     }
 
     @Test
+    fun horizontalWinnerTest() {
+        // X X X
+        sut.set(Player.X, 0, 0)
+        sut.set(Player.X, 1, 0)
+        sut.set(Player.X, 2, 0)
+        assertFalse(sut.isFull(), "Board should not be full yet")
+        assertEquals(Player.X, sut.hasWinner(), "Player.X should have won")
+    }
+
+    @Test
     fun noWinnerTest() {
         // Board with just one move
         sut.set(Player.X, 0, 0)

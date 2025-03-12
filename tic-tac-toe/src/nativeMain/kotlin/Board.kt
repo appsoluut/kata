@@ -30,6 +30,34 @@ class Board {
     }
 
     fun hasWinner(): Player? {
+        // Check rows
+        board.forEach { row ->
+            Player.entries.forEach { player ->
+                if (row.all { it == player }) {
+                    return player
+                }
+            }
+        }
+
+        // Check columns
+        for (row in 0..2) {
+            Player.entries.forEach { player ->
+                if (board.all { it[row] == player }) {
+                    return player
+                }
+            }
+        }
+
+        // Check diagonals
+        Player.entries.forEach { player ->
+            if (board[0][0] == player && board[1][1] == player && board[2][2] == player) {
+                return player
+            }
+            if (board[0][2] == player && board[1][1] == player && board[2][0] == player) {
+                return player
+            }
+        }
+
         return null
     }
 }
