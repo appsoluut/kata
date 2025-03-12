@@ -1,10 +1,15 @@
 class Board {
     private val board = MutableList(3) { MutableList<Player?>(3) { null } }
 
-    fun debug() {
+    fun print() {
         println("Board:")
         board.forEach { row ->
-            println(row.joinToString(" | "))
+            println(row.joinToString(
+                separator = " | ",
+                transform = { player ->
+                    player?.toString() ?: " "
+                }
+            ))
         }
     }
 
